@@ -1,0 +1,40 @@
+server:
+  port: ${port:9001}
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.199.130:3306/springcloud
+    username: root
+    password: root
+  application:
+    # 应用名称(服务id)
+    name: user-service
+# 配置eureka服务端地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka,http://localhost:8762/eureka
+  instance:
+    ip-address: 127.0.0.1 # ip地址
+    prefer-ip-address: true # 更倾向于使用ip，而不是host名称
+    lease-renewal-interval-in-seconds: 5 # 5s发送一次心跳续约； 默认30秒
+    lease-expiration-duration-in-seconds: 15 # 15s未发送心跳续约就失效； 默认90秒
+mybatis-plus:
+  configuration:
+    # 打印sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+feign:
+  hystrix:
+    enabled: true # 开启Feign的熔断功能(线程隔离与熔断)
+
+# 线程隔离超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+
