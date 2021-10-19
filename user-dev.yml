@@ -36,5 +36,5 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 1000
-
-
+test:
+  name: zhangshan
