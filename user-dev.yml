@@ -37,4 +37,4 @@ hystrix:
           thread:
             timeoutInMilliseconds: 1000
 test:
-  name: lishi1
+  name: wangwu
